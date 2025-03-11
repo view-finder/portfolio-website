@@ -8,6 +8,8 @@ import TopNav from './components/TopNav';
 import AchievementsPopup from './components/AchievementsPopup';
 import ExperiencePopup from './components/ExperiencePopup';
 import { useState } from 'react';
+import Link from 'next/link';
+import { Metadata } from 'next';
 
 const Section = ({ children, id, className = "" }: { children: React.ReactNode; id: string; className?: string }) => {
   const [ref, inView] = useInView({
@@ -81,6 +83,11 @@ const businessCards = [
     link: 'https://drive.google.com/drive/folders/1vc2NcVwoPiCpI2oiYS9JRKQm9ugM3QQ6?usp=sharing'
   }
 ];
+
+export const metadata: Metadata = {
+  title: 'Portfolio Website',
+  description: 'My personal portfolio website',
+}
 
 export default function Home() {
   const [showAchievements, setShowAchievements] = useState(false);
@@ -193,7 +200,35 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className="min-h-screen bg-[#111111] text-white overflow-x-hidden">
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+        >
+          <source src="/assets/bgvideo.mp4" type="video/mp4" />
+        </video>
+        
+        <div className="relative z-10 text-center px-4">
+          <div className="w-32 h-32 mx-auto mb-8 relative rounded-full overflow-hidden border-4 border-[#ffc876]">
+            <Image
+              src="/assets/profile.jpg"
+              alt="Profile"
+              fill
+              className="object-cover"
+              priority
+              loader={({ src }) => src.startsWith('/') ? src : `/${src}`}
+            />
+          </div>
+          <h1 className="text-4xl md:text-6xl font-bold mb-4">Kartik Verma</h1>
+          <p className="text-xl md:text-2xl text-[#ffc876]">Full Stack Developer</p>
+        </div>
+      </section>
+
       <TopNav />
       <Navigation />
       

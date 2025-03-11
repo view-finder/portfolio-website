@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 const sections = [
   { id: 'about', label: 'About' },
@@ -41,29 +42,26 @@ export default function TopNav() {
     }
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <>
       {/* Floating hamburger button */}
       <button
-        onClick={() => setIsMenuOpen(!isMenuOpen)}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-[#111111] rounded-full flex items-center justify-center shadow-lg md:hidden hover:bg-[#222222] transition-all duration-300"
+        onClick={toggleMenu}
+        className={`fixed bottom-4 right-4 z-50 w-14 h-14 rounded-full bg-[#111111] md:hidden flex items-center justify-center transition-all duration-300 ${
+          isMenuOpen ? 'rotate-90' : ''
+        }`}
       >
-        <span className="sr-only">Open main menu</span>
-        <div className="w-7 h-4 relative flex items-center justify-center">
-          <span
-            className={`absolute w-full h-[2px] bg-white transform transition-all duration-300 ease-in-out ${
-              isMenuOpen ? 'rotate-45 translate-y-0' : 'translate-y-[-8px]'
-            }`}
-          />
-          <span
-            className={`absolute w-full h-[2px] bg-white transform transition-all duration-300 ease-in-out ${
-              isMenuOpen ? 'opacity-0' : 'opacity-100'
-            }`}
-          />
-          <span
-            className={`absolute w-full h-[2px] bg-white transform transition-all duration-300 ease-in-out ${
-              isMenuOpen ? '-rotate-45 translate-y-0' : 'translate-y-[8px]'
-            }`}
+        <div className="relative w-full h-full overflow-hidden rounded-full">
+          <Image
+            src="/assets/profile.jpg"
+            alt="Menu"
+            fill
+            className="object-cover"
+            priority
           />
         </div>
       </button>
