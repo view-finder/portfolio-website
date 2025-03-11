@@ -12,6 +12,8 @@ const sections = [
   { id: 'extracurricular', label: 'Extracurricular Activities' },
 ];
 
+const basePath = process.env.NODE_ENV === 'production' ? '/portfolio-website' : '';
+
 export default function TopNav() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
@@ -57,7 +59,7 @@ export default function TopNav() {
       >
         <div className="relative w-full h-full overflow-hidden rounded-full">
           <Image
-            src="/assets/profile.jpg"
+            src={`${basePath}/assets/profile.jpg`}
             alt="Menu"
             fill
             className="object-cover"
