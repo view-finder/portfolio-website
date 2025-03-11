@@ -2,14 +2,12 @@
 
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import Image from 'next/image';
+import CustomImage from './components/CustomImage';
 import Navigation from './components/Navigation';
 import TopNav from './components/TopNav';
 import AchievementsPopup from './components/AchievementsPopup';
 import ExperiencePopup from './components/ExperiencePopup';
 import { useState } from 'react';
-import Link from 'next/link';
-import { Metadata } from 'next';
 
 const Section = ({ children, id, className = "" }: { children: React.ReactNode; id: string; className?: string }) => {
   const [ref, inView] = useInView({
@@ -84,11 +82,6 @@ const businessCards = [
   }
 ];
 
-export const metadata: Metadata = {
-  title: 'Portfolio Website',
-  description: 'My personal portfolio website',
-}
-
 export default function Home() {
   const [showAchievements, setShowAchievements] = useState(false);
   const [selectedExperience, setSelectedExperience] = useState<string | null>(null);
@@ -110,7 +103,7 @@ export default function Home() {
           <li>Facilitated cross-team communications and product executions, ensuring timely delivery that boosted product adoption, and revenue</li>
         </ul>
         <div className="mt-8 rounded-xl overflow-hidden mx-auto w-fit">
-          <Image
+          <CustomImage
             src="/assets/ads.jpg"
             alt="Zomato Ads Dashboard"
             width={200}
@@ -200,35 +193,7 @@ export default function Home() {
   };
 
   return (
-    <main className="min-h-screen bg-[#111111] text-white overflow-x-hidden">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-        >
-          <source src="/assets/bgvideo.mp4" type="video/mp4" />
-        </video>
-        
-        <div className="relative z-10 text-center px-4">
-          <div className="w-32 h-32 mx-auto mb-8 relative rounded-full overflow-hidden border-4 border-[#ffc876]">
-            <Image
-              src="/assets/profile.jpg"
-              alt="Profile"
-              fill
-              className="object-cover"
-              priority
-              loader={({ src }) => src.startsWith('/') ? src : `/${src}`}
-            />
-          </div>
-          <h1 className="text-4xl md:text-6xl font-bold mb-4">Kartik Verma</h1>
-          <p className="text-xl md:text-2xl text-[#ffc876]">Full Stack Developer</p>
-        </div>
-      </section>
-
+    <main>
       <TopNav />
       <Navigation />
       
@@ -254,7 +219,7 @@ export default function Home() {
           <div className="w-64 h-64 md:w-[400px] md:h-[400px] relative">
             <div className="absolute inset-0 border-[16px] border-[#f5f5f5] rounded-full"></div>
             <div className="w-full h-full rounded-full overflow-hidden">
-              <Image
+              <CustomImage
                 src="/assets/profile.jpg"
                 alt="Kartik Verma"
                 width={400}
@@ -282,7 +247,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image
+                <CustomImage
                   src="/assets/gmail.png"
                   alt="Gmail"
                   width={32}
@@ -296,7 +261,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image
+                <CustomImage
                   src="/assets/whatsapp.png"
                   alt="WhatsApp"
                   width={32}
@@ -310,7 +275,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image
+                <CustomImage
                   src="/assets/linkedin.png"
                   alt="LinkedIn"
                   width={32}
@@ -324,7 +289,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image
+                <CustomImage
                   src="/assets/instagram.png"
                   alt="Instagram"
                   width={32}
@@ -338,7 +303,7 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Image
+                <CustomImage
                   src="/assets/youtube.png"
                   alt="YouTube"
                   width={32}
@@ -435,7 +400,7 @@ export default function Home() {
             {/* Graduation Image */}
             <div className="w-full md:w-[300px] h-[400px] relative rounded-2xl overflow-hidden border-4 border-white p-1">
               <div className="absolute inset-0 rounded-xl overflow-hidden">
-                <Image
+                <CustomImage
                   src="/assets/graduation.jpg"
                   alt="Graduation"
                   fill
@@ -470,7 +435,7 @@ export default function Home() {
               <div className="flex flex-col h-full">
                 <div className="p-4">
                   <div className="w-32 h-32 mx-auto mb-6 rounded-xl overflow-hidden p-2 bg-white transform transition-transform group-hover:scale-105">
-                    <Image
+                    <CustomImage
                       src="/assets/zomato.png"
                       alt="Zomato"
                       width={128}
@@ -509,7 +474,7 @@ export default function Home() {
               <div className="flex flex-col h-full">
                 <div className="p-4">
                   <div className="w-32 h-32 mx-auto mb-6 rounded-xl overflow-hidden p-2 bg-white transform transition-transform group-hover:scale-105">
-                    <Image
+                    <CustomImage
                       src="/assets/savein.jpg"
                       alt="SaveIN"
                       width={128}
@@ -548,7 +513,7 @@ export default function Home() {
               <div className="flex flex-col h-full">
                 <div className="p-4">
                   <div className="w-32 h-32 mx-auto mb-6 rounded-xl overflow-hidden p-2 bg-white transform transition-transform group-hover:scale-105">
-                    <Image
+                    <CustomImage
                       src="/assets/zo.png"
                       alt="Zostel"
                       width={128}
@@ -621,7 +586,7 @@ export default function Home() {
               <div className="flex flex-col h-full">
                 <div className="p-4">
                   <div className="w-full h-48 mx-auto mb-6 rounded-xl overflow-hidden bg-white transform transition-transform group-hover:scale-105">
-                    <Image
+                    <CustomImage
                       src="/assets/drively.jpg"
                       alt="Drively"
                       width={320}
@@ -749,7 +714,7 @@ export default function Home() {
                         onClick={() => window.open(card.link, '_blank')}
                         className="flex-shrink-0 w-[260px] md:w-[300px] bg-[#252533] rounded-lg overflow-hidden cursor-pointer group hover:scale-105 transition-transform duration-300"
                       >
-                        <Image
+                        <CustomImage
                           src={card.image}
                           alt={card.title}
                           width={300}
@@ -814,7 +779,7 @@ export default function Home() {
                 Part of the Basketball Championship as member of the Rajendra Prasad Hall, assisting the team in numerous ways
               </p>
               <div className="max-w-2xl mx-auto p-4 border-4 border-white rounded-3xl overflow-hidden">
-                <Image
+                <CustomImage
                   src="/assets/basketball.jpg"
                   alt="Basketball Championship"
                   width={800}
