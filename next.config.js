@@ -4,7 +4,8 @@ const nextConfig = {
   images: {
     unoptimized: true, // Required for static export
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/portfolio-website' : '', // Replace with your repo name
+  basePath: process.env.NODE_ENV === 'production' ? '/portfolio-website' : '', // Your repo name
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/portfolio-website/' : '',
 }
 
 module.exports = nextConfig 
