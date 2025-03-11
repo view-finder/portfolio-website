@@ -10,6 +10,10 @@ permissions:
   pages: write
   id-token: write
 
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,18 +24,22 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: npm
+          cache: 'npm'
       
       - name: Install dependencies
-        run: npm ci
+        run: |
+          npm ci
+          npm install sharp
       
       - name: Build
+        env:
+          NEXT_PUBLIC_BASE_PATH: /portfolio-website
         run: npm run build
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
         with:
-          path: ./out
+          path: out
 
   deploy:
     environment:
